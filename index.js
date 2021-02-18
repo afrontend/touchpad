@@ -3,9 +3,11 @@ const fastify = require('fastify')({
   logger: true
 })
 
+const package = require('./package.json')
+
 // Declare a route
 fastify.get('/', function (request, reply) {
-  reply.send({ hello: 'touchpad server!' })
+  reply.send({ hello: `touchpad server! (${package.version})` })
 })
 
 // Run the server!
