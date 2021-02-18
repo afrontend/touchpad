@@ -1,0 +1,29 @@
+{
+  "name": "touchpad",
+  "version": "1.0.0",
+  "description": "a touchpad server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afrontend/touchpad.git"
+  },
+  "keywords": [
+    "touchpad"
+  ],
+  "author": {
+    "name": "Bob Hwang",
+    "email": "autoscripts@gmail.com",
+    "url": "https://agvim.wordpress.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/afrontend/touchpad/issues"
+  },
+  "homepage": "https://github.com/afrontend/touchpad#readme",
+  "dependencies": {
+    "fastify": "^3.12.0"
+  }
+}
