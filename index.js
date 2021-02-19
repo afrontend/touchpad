@@ -1,16 +1,12 @@
 // Require the framework and instantiate it
+const path = require('path')
+const package = require('./package.json')
 const exec = require('child_process').exec;
 
 const fastify = require('fastify')({
   logger: true
 })
 
-const package = require('./package.json')
-
-// Declare a route
-fastify.get('/', function (request, reply) {
-  reply.send({ hello: `touchpad server! (${package.version})` })
-})
 
 fastify.post('/scrollUp', async (request, reply) => {
   exec('xdotool click 5', function callback(error, stdout, stderr) {
@@ -20,6 +16,10 @@ fastify.post('/scrollUp', async (request, reply) => {
       reply.send({ hello: 'scrollUp ok!' })
     }
   });
+})
+
+fastify.register(require('fastify-static'), {
+  root: path.join(__dirname, 'public'),
 })
 
 // Run the server!
