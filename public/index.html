@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <title>touchpad for browser</title>
   <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
 
   <link rel="manifest" href="site.webmanifest">
   <link rel="apple-touch-icon" href="icon.png">
@@ -23,9 +23,10 @@
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
 
-  <div class="panel" />
+  <div id="panel" />
 
   <!-- Add your site or application content here -->
+  <script src="js/vendor/hammer.js"></script>
   <script src="js/vendor/modernizr-3.7.1.min.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/main.js"></script>
