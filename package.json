@@ -1,7 +1,7 @@
 {
-  "name": "touchpad",
+  "name": "browserTouchPad",
   "version": "1.0.0",
-  "description": "a touchpad server",
+  "description": "touchpad for browser",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
