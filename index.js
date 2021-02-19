@@ -1,4 +1,6 @@
 // Require the framework and instantiate it
+const exec = require('child_process').exec;
+
 const fastify = require('fastify')({
   logger: true
 })
@@ -9,10 +11,15 @@ const package = require('./package.json')
 fastify.get('/', function (request, reply) {
   reply.send({ hello: `touchpad server! (${package.version})` })
 })
+
 fastify.post('/scrollUp', async (request, reply) => {
-  var exec = require('child_process').exec;
-  exec('xdotool click 5', function callback(error, stdout, stderr){});
-  return { hello: 'scrollUp ok!' }
+  exec('xdotool click 5', function callback(error, stdout, stderr) {
+    if (error) {
+      reply.send({ hello: 'scrollUp fail!' })
+    } else {
+      reply.send({ hello: 'scrollUp ok!' })
+    }
+  });
 })
 
 // Run the server!
