@@ -1,19 +1,22 @@
 // Require the framework and instantiate it
-const path = require('path')
 const package = require('./package.json')
+const path = require('path')
 const exec = require('child_process').exec;
 
 const fastify = require('fastify')({
   logger: true
 })
 
+fastify.get('/version', async (request, reply) => {
+  return { version: package.version }
+})
 
 fastify.post('/scrollUp', async (request, reply) => {
   exec('xdotool click 5', function callback(error, stdout, stderr) {
     if (error) {
-      reply.send({ hello: 'scrollUp fail!' })
+      reply.send({ scroll: 'scrollUp fail!' })
     } else {
-      reply.send({ hello: 'scrollUp ok!' })
+      reply.send({ scroll: 'scrollUp ok!' })
     }
   });
 })
