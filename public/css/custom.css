@@ -1,5 +1,26 @@
 #panel {
+    position: relative;
     width: 100vw;
     height: 100vh;
     background-color: blanchedalmond;
+}
+
+#panel::after {
+    position: absolute;
+    content: '';
+    height: 2px;
+    width: 50px;
+    top: calc(50% - (2px/2));
+    left: calc(50% - (50px/2));
+    background-color: yellowgreen;
+}
+
+#panel::before {
+    position: absolute;
+    content: '';
+    height: 50px;
+    width: 2px;
+    top: calc(50% - (50px/2));
+    left: calc(50% - (2px/2));
+    background-color: yellowgreen;
 }
