@@ -2,6 +2,32 @@
 const package = require('./package.json')
 const path = require('path')
 
+const cmdTable = {
+  'scrollUp': 'xdotool click 5',
+  'scrollDown': 'xdotool click 4',
+  'volumeUp': 'xdotool key XF86AudioLowerVolume',
+  'volumeDown': 'xdotool key XF86AudioRaiseVolume'
+}
+
+const msgTable = {
+  'scrollUp': {
+    ok: 'scrollUp ok',
+    fail: 'scrollUp fail!'
+  },
+  'scrollDown': {
+    ok: 'scrollDown ok',
+    fail: 'scrollDown fail!'
+  },
+  'volumeUp': {
+    ok: 'volumeUp ok',
+    fail: 'volumeUp fail!'
+  },
+  'volumeDown': {
+    ok: 'volumeDown ok',
+    fail: 'volumeDown fail!'
+  }
+}
+
 const fastify = require('fastify')({
   logger: true
 })
@@ -10,24 +36,16 @@ fastify.get('/version', (request, reply) => {
   return { version: package.version }
 })
 
-fastify.get('/scrollUp', async (request, reply) => {
+fastify.get('/:cmd', async (request, reply) => {
   const exec = require('child_process').exec;
-  exec('xdotool click 5', function callback(error, stdout, stderr) {
+  const cmdName = request.params.cmd
+  const command = cmdTable[cmdName]
+  if (!cmdName || !command) return { error: 'invalid command'}
+  exec(command, function callback(error, stdout, stderr) {
     if (error) {
-      reply.send({ scroll: 'scrollUp fail!' })
+      reply.send({ command: msgTable[cmdName].fail })
     } else {
-      reply.send({ scroll: 'scrollUp ok!' })
-    }
-  });
-})
-
-fastify.get('/scrollDown', (request, reply) => {
-  const exec = require('child_process').exec;
-  exec('xdotool click 4', function callback(error, stdout, stderr) {
-    if (error) {
-      reply.send({ scroll: 'scrollDown fail!' })
-    } else {
-      reply.send({ scroll: 'scrollDown ok!' })
+      reply.send({ command: msgTable[cmdName].ok })
     }
   });
 })
