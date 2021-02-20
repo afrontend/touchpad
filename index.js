@@ -11,12 +11,22 @@ fastify.get('/version', async (request, reply) => {
   return { version: package.version }
 })
 
-fastify.post('/scrollUp', async (request, reply) => {
+fastify.get('/scrollUp', async (request, reply) => {
   exec('xdotool click 5', function callback(error, stdout, stderr) {
     if (error) {
       reply.send({ scroll: 'scrollUp fail!' })
     } else {
       reply.send({ scroll: 'scrollUp ok!' })
+    }
+  });
+})
+
+fastify.get('/scrollDown', async (request, reply) => {
+  exec('xdotool click 4', function callback(error, stdout, stderr) {
+    if (error) {
+      reply.send({ scroll: 'scrollDown fail!' })
+    } else {
+      reply.send({ scroll: 'scrollDown ok!' })
     }
   });
 })
