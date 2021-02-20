@@ -8,7 +8,7 @@ hammertime.on('touch', function(ev) {
 
 var send = function (url) {
   let request = new XMLHttpRequest();
-  request.open("GET", url);
+  request.open("POST", url);
   request.onload = function(){
     console.log(request.response);
   }

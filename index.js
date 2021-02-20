@@ -36,7 +36,7 @@ fastify.get('/version', (request, reply) => {
   return { version: package.version }
 })
 
-fastify.get('/:cmd', async (request, reply) => {
+fastify.post('/:cmd', async (request, reply) => {
   const exec = require('child_process').exec;
   const cmdName = request.params.cmd
   const command = cmdTable[cmdName]
