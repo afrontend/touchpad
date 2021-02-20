@@ -1,3 +1,8 @@
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
 #panel {
     position: relative;
     width: 100vw;
@@ -23,4 +28,14 @@
     top: calc(50% - (50px/2));
     left: calc(50% - (2px/2));
     background-color: yellowgreen;
+}
+
+#panel .up,
+#panel .down {
+    width: 50%;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    border: 1px solid chocolate;
+    font-size: 40px;
 }
