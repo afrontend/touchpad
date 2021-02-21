@@ -5,8 +5,8 @@ const path = require('path')
 const cmdTable = {
   'scrollUp': 'xdotool click 5',
   'scrollDown': 'xdotool click 4',
-  'volumeUp': 'xdotool key XF86AudioLowerVolume',
-  'volumeDown': 'xdotool key XF86AudioRaiseVolume'
+  'volumeUp': 'xdotool key XF86AudioRaiseVolume',
+  'volumeDown': 'xdotool key XF86AudioLowerVolume'
 }
 
 const msgTable = {
