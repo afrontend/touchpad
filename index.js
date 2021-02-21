@@ -42,7 +42,7 @@ const msgTable = {
 }
 
 const fastify = require('fastify')({
-  logger: true
+  logger: process.env.LOCAL
 })
 
 fastify.get('/version', (request, reply) => {
