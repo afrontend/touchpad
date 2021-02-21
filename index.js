@@ -1,12 +1,25 @@
 // Require the framework and instantiate it
 const package = require('./package.json')
 const path = require('path')
+const execFile = require('child_process').execFile;
 
 const cmdTable = {
-  'scrollUp': 'xdotool click 5',
-  'scrollDown': 'xdotool click 4',
-  'volumeUp': 'xdotool key XF86AudioRaiseVolume',
-  'volumeDown': 'xdotool key XF86AudioLowerVolume'
+  'scrollUp': {
+    file: 'xdotool',
+    options: ['click', '5']
+  },
+  'scrollDown': {
+    file: 'xdotool',
+    options: ['click', '4']
+  },
+  'volumeUp': {
+    file: 'xdotool',
+    options: ['key', 'XF86AudioRaiseVolume']
+  },
+  'volumeDown': {
+    file: 'xdotool',
+    options: ['key', 'XF86AudioLowerVolume']
+  },
 }
 
 const msgTable = {
@@ -37,11 +50,10 @@ fastify.get('/version', (request, reply) => {
 })
 
 fastify.post('/:cmd', async (request, reply) => {
-  const exec = require('child_process').exec;
   const cmdName = request.params.cmd
   const command = cmdTable[cmdName]
   if (!cmdName || !command) return { error: 'invalid command'}
-  exec(command, function callback(error, stdout, stderr) {
+  execFile(command.file, command.options, function callback(error, stdout, stderr) {
     if (error) {
       reply.send({ command: msgTable[cmdName].fail })
     } else {

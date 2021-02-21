@@ -1,8 +1,9 @@
-# touchpad
+# browser touchpad
 
 ## install
 
     git clone https://github.com/afrontend/touchpad.git
+    npm ci
 
 ## start
 

@@ -17,7 +17,7 @@ var scrollUpCount = 0;
 var scrollDownCount = 0;
 var volumeUpCount = 0;
 var volumeDownCount = 0;
-var LIMIT_SCROLL_COUNT = 2
+var LIMIT_SCROLL_COUNT = 1
 var LIMIT_VOLUME_COUNT = 5
 
 // listen to events...
