@@ -1,6 +1,6 @@
 {
   "name": "browserTouchPad",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "touchpad for browser",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
   "author": {
     "name": "Bob Hwang",
     "email": "autoscripts@gmail.com",
-    "url": "https://agvim.wordpress.com"
+    "url": "https://afrontend.github.io/"
   },
   "license": "MIT",
   "bugs": {
