@@ -1,10 +1,4 @@
 var panel = document.getElementById('panel');
-var upButton = document.querySelector('#panel .up');
-var downButton = document.querySelector('#panel .down');
-var hammertime = new Hammer(panel);
-hammertime.on('touch', function(ev) {
-  console.log(ev);
-});
 
 var send = function (url) {
   let request = new XMLHttpRequest();
@@ -15,10 +9,16 @@ var send = function (url) {
   request.send();
 }
 
-upButton.addEventListener('click', function () {
-  send('/scrollUp')
-})
+var mc = new Hammer(panel);
 
-downButton.addEventListener('click', function () {
-  send('/scrollDown')
-})
+mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
+
+// listen to events...
+mc.on("panleft panright panup pandown tap press", function(ev) {
+    panel.textContent = ev.type +" gesture detected.";
+    if (ev.type === 'panup') {
+      send('/scrollUp')
+    } else if (ev.type === 'pandown') {
+      send('/scrollDown')
+    }
+});
