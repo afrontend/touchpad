@@ -3,10 +3,13 @@
 ## install
 
     git clone https://github.com/afrontend/touchpad.git
+    cd touchpad
     npm ci
 
 ## start
 
     npm start
 
-open http://localhost:3000
+## usage
+
+    open http://your.ip.address:3000 with browser
