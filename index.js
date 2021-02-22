@@ -4,6 +4,10 @@ const path = require('path')
 const execFile = require('child_process').execFile;
 
 const cmdTable = {
+  'move': {
+    file: 'xdotool',
+    options: ['mousemove_relative', '--']
+  },
   'scrollUp': {
     file: 'xdotool',
     options: ['click', '5']
@@ -23,6 +27,10 @@ const cmdTable = {
 }
 
 const msgTable = {
+  'move': {
+    ok: 'move ok',
+    fail: 'move fail!'
+  },
   'scrollUp': {
     ok: 'scrollUp ok',
     fail: 'scrollUp fail!'
@@ -51,9 +59,21 @@ fastify.get('/version', (request, reply) => {
 
 fastify.post('/:cmd', async (request, reply) => {
   const cmdName = request.params.cmd
+  const { x, y } = request.body
   const command = cmdTable[cmdName]
   if (!cmdName || !command) return { error: 'invalid command'}
-  execFile(command.file, command.options, function callback(error, stdout, stderr) {
+  const options = []
+  if (x && y) {
+    options.push(command.options[0])
+    options.push(command.options[1])
+    options.push(x)
+    options.push(y)
+    console.log(x, y, options)
+  } else {
+    options = command.options
+  }
+
+  execFile(command.file, options, function callback(error, stdout, stderr) {
     if (error) {
       reply.send({ command: msgTable[cmdName].fail })
     } else {
