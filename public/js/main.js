@@ -18,7 +18,7 @@ var scrollDownCount = 0;
 var volumeUpCount = 0;
 var volumeDownCount = 0;
 var LIMIT_SCROLL_START = 1
-var LIMIT_VOLUME_START = 20 
+var LIMIT_VOLUME_START = 20
 
 // listen to events...
 mc.on("panleft panright panup pandown tap press", function(ev) {

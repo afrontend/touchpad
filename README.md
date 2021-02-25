@@ -13,3 +13,7 @@
 ## usage
 
     open http://your.ip.address:3000 with browser
+
+## LICENSE
+
+MIT © Bob Hwang
