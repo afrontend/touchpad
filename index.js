@@ -59,11 +59,11 @@ fastify.get('/version', (request, reply) => {
 
 fastify.post('/:cmd', async (request, reply) => {
   const cmdName = request.params.cmd
-  const { x, y } = request.body
   const command = cmdTable[cmdName]
   if (!cmdName || !command) return { error: 'invalid command'}
-  const options = []
-  if (x && y) {
+  let options = []
+  if (request.body && request.body.x && request.body.y) {
+    const { x, y } = request.body
     options.push(command.options[0])
     options.push(command.options[1])
     options.push(x)
