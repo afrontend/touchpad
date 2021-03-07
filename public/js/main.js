@@ -11,13 +11,11 @@ var send = function (url) {
 }
 
 leftButton.addEventListener('click', () => {
-  window.console.log('down')
   send('/volumeDown')
 })
 
 var rightButton = document.querySelector('.right')
 rightButton.addEventListener('click', () => {
-  window.console.log('up')
   send('/volumeUp')
 })
 
