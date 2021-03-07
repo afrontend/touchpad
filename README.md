@@ -14,6 +14,10 @@
 
     open http://your.ip.address:3000 with browser
 
+## debug
+
+    LOCAL=true npm start
+
 ## LICENSE
 
 MIT © Bob Hwang
